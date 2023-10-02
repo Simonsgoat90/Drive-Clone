@@ -1,5 +1,14 @@
 import NextAuth from "next-auth";
 
-import { authOptions } from "pepito/server/auth";
+import GithubProvider from "next-auth/providers/github";
 
-export default NextAuth(authOptions);
+export const authOptions = {
+    providers: [
+        GithubProvider (<GithubAuth>{
+            clientId: process.env.GITHUB_ID,
+            clientSecret: process.env.GITHUB_SECRET,
+        }),
+    ],
+};
+
+export default NextAuth(authOptions)
